@@ -95,11 +95,14 @@ export const TERMINAL = {
 
 export const FEATURED_PROJECT = {
   eyebrow: "SELECTED WORK",
-  headline: "[FEATURED PROJECT NAME]",
-  image: null, // TODO: add screenshot to /public and reference it here
-  problem: "[The problem this project solved.]",
-  approach: "[Your approach — key decisions, stack, role.]",
-  result: "[The outcome — a real metric or concrete result.]",
+  headline: "AEGISX",
+  images: ["/projects/project-1-dashboard.png", "/projects/project-1-technology.png"],
+  problem:
+    "Most security teams assume their controls work. They check boxes on a compliance list, but nothing actually tests whether an attack would succeed.",
+  approach:
+    "AegisX continuously and autonomously probes an organization's real defenses — running simulated attacks and validation checks across apps, controls, and infrastructure — and turns that into a live readiness score.",
+  result:
+    "Teams see what's actually protected, not what's merely documented, and know exactly where to fix gaps before an attacker or auditor finds them.",
   href: "#", // TODO: link to live project
 };
 

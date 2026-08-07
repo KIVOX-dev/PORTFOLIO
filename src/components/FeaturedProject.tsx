@@ -2,6 +2,7 @@ import { FEATURED_PROJECT } from "@/content/site";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { Slideshow } from "@/components/ui/Slideshow";
 
 export function FeaturedProject() {
   return (
@@ -18,13 +19,9 @@ export function FeaturedProject() {
 
         <div className="mt-16 grid gap-12 md:grid-cols-2 md:items-center">
           <Reveal delay={0.1}>
-            {/* Cream-bezel device frame — replace the placeholder box with an <Image> once you add a screenshot */}
+            {/* Cream-bezel device frame */}
             <div className="rounded-3xl border-2 border-ink bg-offwhite p-3 shadow-hard-lg">
-              <div className="flex aspect-[4/3] items-center justify-center rounded-xl border-2 border-dashed border-ink/30 bg-ink/5">
-                <span className="font-mono text-xs uppercase tracking-widest text-ink/40">
-                  [ project screenshot ]
-                </span>
-              </div>
+              <Slideshow images={FEATURED_PROJECT.images} alt={FEATURED_PROJECT.headline} />
             </div>
           </Reveal>
 
