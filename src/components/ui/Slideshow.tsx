@@ -7,9 +7,15 @@ type SlideshowProps = {
   images: string[];
   alt: string;
   intervalMs?: number;
+  aspectClassName?: string;
 };
 
-export function Slideshow({ images, alt, intervalMs = 2000 }: SlideshowProps) {
+export function Slideshow({
+  images,
+  alt,
+  intervalMs = 2000,
+  aspectClassName = "aspect-[4/3]",
+}: SlideshowProps) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -21,7 +27,9 @@ export function Slideshow({ images, alt, intervalMs = 2000 }: SlideshowProps) {
   }, [images.length, intervalMs]);
 
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-xl border-2 border-dashed border-ink/30 bg-ink/5">
+    <div
+      className={`relative overflow-hidden rounded-xl border-2 border-dashed border-ink/30 bg-ink/5 ${aspectClassName}`}
+    >
       {images.map((src, i) => (
         <Image
           key={src}

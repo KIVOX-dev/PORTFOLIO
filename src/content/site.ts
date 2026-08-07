@@ -40,7 +40,15 @@ export const STATEMENT = {
     "FASTAPI",
     "FIGMA",
     "MONGODB",
-    "SHIPPED 8+ PROJECTS",
+    "ARTIFICIAL INTELLIGENCE",
+    "GENERATIVE AI",
+    "PROMPT ENGINEERING",
+    "LLMS",
+    "AI PAIR PROGRAMMING",
+    "NUMPY",
+    "PANDAS",
+    "SCIKIT-LEARN",
+    "PREDICTIVE MODELING",
   ],
 };
 
@@ -132,30 +140,35 @@ export type Project = {
   description: string;
   tags: string[];
   href: string;
-  image: string | null;
+  images: string[];
 };
 
 export const PROJECTS: Project[] = [
   {
-    name: "[Project 2 name]",
-    description: "[One-line description of what it does and the outcome.]",
-    tags: ["[Tag]", "[Tag]"],
+    name: "MJ Chatbot",
+    description: "A custom-built summarization chatbot with a RAG pipeline.",
+    tags: ["RAG", "LLM"],
     href: "#",
-    image: null,
+    images: ["/projects/project-2-dashboard.png", "/projects/project-2-technology.png"],
   },
   {
-    name: "[Project 3 name]",
-    description: "[One-line description of what it does and the outcome.]",
-    tags: ["[Tag]", "[Tag]"],
+    name: "BioOS",
+    description:
+      "An AI-driven biological intelligence system for personalized health, recovery, and performance analytics.",
+    tags: ["AI", "DAILY-TRACKER"],
     href: "#",
-    image: null,
+    images: [
+      "/projects/project-3-dashboard.png",
+      "/projects/project-3-dashboard2.png",
+      "/projects/project-3-technology.png",
+    ],
   },
   {
     name: "[Project 4 name]",
     description: "[One-line description of what it does and the outcome.]",
     tags: ["[Tag]", "[Tag]"],
     href: "#",
-    image: null,
+    images: [],
   },
 ];
 
