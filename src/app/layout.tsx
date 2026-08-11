@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Caveat, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE } from "@/content/site";
 
@@ -38,7 +39,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${display.variable} ${script.variable} ${mono.variable} ${body.variable} scroll-smooth`}
     >
-      <body className="bg-cream text-ink font-body antialiased">{children}</body>
+      <body className="bg-cream text-ink font-body antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
