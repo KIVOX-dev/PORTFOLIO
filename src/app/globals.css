@@ -1,21 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #f2ecd8;
-  --color-ink: #0b0b0a;
-  --color-lime: #cbff3d;
-  --color-coral: #ff6a4d;
-  --color-jade: #1e9b86;
-  --color-offwhite: #f5f1e4;
+  --color-ink: #0a0a0a;
+  --color-void: #050505;
+  --color-graphite: #131313;
+  --color-paper: #f3efe6;
+  --color-paper-dim: #e8e2d2;
+  --color-red: #e5171f;
+  --color-red-dim: #ff4148;
+  --color-steel: #8f8f8f;
+  --color-hair: rgba(243, 239, 230, 0.14);
+  --color-hair-ink: rgba(10, 10, 10, 0.12);
 }
 
 @theme inline {
-  --color-cream: var(--color-cream);
   --color-ink: var(--color-ink);
-  --color-lime: var(--color-lime);
-  --color-coral: var(--color-coral);
-  --color-jade: var(--color-jade);
-  --color-offwhite: var(--color-offwhite);
+  --color-void: var(--color-void);
+  --color-graphite: var(--color-graphite);
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-red: var(--color-red);
+  --color-red-dim: var(--color-red-dim);
+  --color-steel: var(--color-steel);
+  --color-hair: var(--color-hair);
+  --color-hair-ink: var(--color-hair-ink);
 
   --font-display: var(--font-display);
   --font-script: var(--font-script);
@@ -24,31 +32,59 @@
 }
 
 * {
-  border-color: var(--color-ink);
+  border-color: var(--color-hair);
 }
 
 html {
   overflow-x: hidden;
+  background: var(--color-void);
 }
 
 body {
   overflow-x: hidden;
 }
 
-/* Dot-grid texture, used as a background-image utility via bg-dots */
+::selection {
+  background: var(--color-red);
+  color: var(--color-paper);
+}
+
+/* Halftone dot texture, poster-style, used as bg-dots utility */
 .bg-dots {
-  background-image: radial-gradient(var(--color-ink) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(243, 239, 230, 0.5) 1px, transparent 1px);
   background-size: 22px 22px;
   background-position: -11px -11px;
 }
 
-.bg-dots-light {
-  background-image: radial-gradient(rgba(245, 241, 228, 0.35) 1px, transparent 1px);
+.bg-dots-red {
+  background-image: radial-gradient(var(--color-red) 1.4px, transparent 1.4px);
+  background-size: 16px 16px;
+}
+
+.bg-dots-ink {
+  background-image: radial-gradient(rgba(10, 10, 10, 0.45) 1px, transparent 1px);
   background-size: 22px 22px;
   background-position: -11px -11px;
 }
 
-/* Hard offset shadow system, no blur, physical "press" on interaction */
+/* Film-grain overlay, printed-poster grit */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Radial target rings, echoes the poster's "annihilation" motif */
+.bg-target {
+  background-image:
+    repeating-radial-gradient(circle at 50% 50%, rgba(229, 23, 31, 0.35) 0px, rgba(229, 23, 31, 0.35) 1px, transparent 1px, transparent 26px);
+}
+
+/* Hairline border helpers on black surfaces */
+.border-hair {
+  border-color: var(--color-hair);
+}
+
+/* Hard offset shadow system, no blur, poster-panel "sticker" edge */
 .shadow-hard {
   box-shadow: 4px 4px 0px 0px var(--color-ink);
 }
@@ -61,8 +97,12 @@ body {
   box-shadow: 2px 2px 0px 0px var(--color-ink);
 }
 
-.shadow-hard-lime {
-  box-shadow: 4px 4px 0px 0px var(--color-lime);
+.shadow-hard-red {
+  box-shadow: 4px 4px 0px 0px var(--color-red);
+}
+
+.shadow-glow-red {
+  box-shadow: 0 0 60px -12px rgba(229, 23, 31, 0.55);
 }
 
 .press-hard {
@@ -80,6 +120,14 @@ body {
   box-shadow: 0px 0px 0px 0px var(--color-ink);
 }
 
+.press-hard-red:hover {
+  box-shadow: 2px 2px 0px 0px var(--color-red);
+}
+
+.press-hard-red:active {
+  box-shadow: 0px 0px 0px 0px var(--color-red);
+}
+
 /* Marquee ticker */
 @keyframes marquee {
   from {
@@ -91,5 +139,29 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 24s linear infinite;
+  animation: marquee 26s linear infinite;
+}
+
+/* Slow ambient float for hero portrait / decorative glyphs */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
 }

@@ -1,6 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { StatementTicker } from "@/components/StatementTicker";
+import { About } from "@/components/About";
 import { Process } from "@/components/Process";
 import { InsideWork } from "@/components/InsideWork";
 import { FeaturedProject } from "@/components/FeaturedProject";
@@ -16,6 +17,7 @@ export default function Home() {
       <main className="flex flex-1 flex-col">
         <Hero />
         <StatementTicker />
+        <About />
         <Process />
         <InsideWork />
         <FeaturedProject />

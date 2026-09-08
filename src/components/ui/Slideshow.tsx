@@ -28,7 +28,7 @@ export function Slideshow({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border-2 border-dashed border-ink/30 bg-ink/5 ${aspectClassName}`}
+      className={`relative overflow-hidden rounded-xl border-2 border-dashed border-ink/15 bg-ink/5 ${aspectClassName}`}
     >
       {images.map((src, i) => (
         <Image

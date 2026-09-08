@@ -14,6 +14,7 @@ export const SITE = {
   availability: "AVAILABLE FOR WORK",
   email: "07kaviarasan@gmail.com",
   resumeUrl: "#", // TODO: link to your resume PDF
+  photo: "/images/profile.png",
   social: {
     github: "https://github.com/KIVOX-dev",
     linkedin: "https://www.linkedin.com/in/kaviarasan-m-b29095377",
@@ -99,6 +100,25 @@ export const TERMINAL = {
     { text: "✓ build completed in 3.2s", type: "success" },
     { text: "ready to ship →", type: "accent" },
   ] as { text: string; type: "command" | "success" | "muted" | "accent" }[],
+};
+
+export const SKILLS = {
+  eyebrow: "CAPABILITIES",
+  headline: "SKILLS & STACK",
+  groups: [
+    {
+      title: "Frontend",
+      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    },
+    {
+      title: "Backend & AI",
+      skills: ["Node.js", "FastAPI", "MongoDB", "LLMs", "RAG Pipelines", "Prompt Engineering"],
+    },
+    {
+      title: "Data & Tools",
+      skills: ["Python", "NumPy", "Pandas", "Scikit-learn", "Figma", "Git"],
+    },
+  ],
 };
 
 export const FEATURED_PROJECT = {

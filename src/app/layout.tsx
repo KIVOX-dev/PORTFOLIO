@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${display.variable} ${script.variable} ${mono.variable} ${body.variable} scroll-smooth`}
     >
-      <body className="bg-cream text-ink font-body antialiased">
+      <body className="bg-ink text-paper font-body antialiased">
         {children}
         <Analytics />
       </body>

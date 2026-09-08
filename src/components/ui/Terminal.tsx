@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { TERMINAL } from "@/content/site";
 
 const TYPE_STYLES: Record<string, string> = {
-  command: "text-offwhite",
-  success: "text-lime",
-  muted: "text-offwhite/50",
-  accent: "text-coral",
+  command: "text-paper",
+  success: "text-red",
+  muted: "text-paper/50",
+  accent: "text-red-dim",
 };
 
 const CHAR_DELAY: Record<string, number> = {
@@ -63,13 +63,13 @@ export function Terminal() {
   return (
     <div
       aria-hidden="true"
-      className="overflow-hidden rounded-xl border-2 border-lime bg-black shadow-[0_0_40px_-8px_rgba(203,255,61,0.35)]"
+      className="overflow-hidden rounded-xl border-2 border-red bg-black shadow-[0_0_40px_-8px_rgba(229,23,31,0.4)]"
     >
-      <div className="flex items-center gap-2 border-b-2 border-lime/30 bg-lime/5 px-4 py-3">
-        <span className="h-3 w-3 rounded-full bg-coral" />
-        <span className="h-3 w-3 rounded-full bg-lime" />
-        <span className="h-3 w-3 rounded-full bg-jade" />
-        <span className="ml-2 font-mono text-xs uppercase tracking-wide text-offwhite/50">
+      <div className="flex items-center gap-2 border-b-2 border-red/30 bg-red/5 px-4 py-3">
+        <span className="h-3 w-3 rounded-full bg-red-dim" />
+        <span className="h-3 w-3 rounded-full bg-red" />
+        <span className="h-3 w-3 rounded-full bg-steel" />
+        <span className="ml-2 font-mono text-xs uppercase tracking-wide text-paper/50">
           {TERMINAL.label}
         </span>
       </div>
@@ -82,7 +82,7 @@ export function Terminal() {
         ))}
         <p className={typing ? TYPE_STYLES[typing.type] : undefined}>
           {typing?.text}
-          <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-lime" />
+          <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-red" />
         </p>
       </div>
     </div>

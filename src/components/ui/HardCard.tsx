@@ -3,20 +3,18 @@ import type { ReactNode } from "react";
 type HardCardProps = {
   children: ReactNode;
   className?: string;
-  tone?: "offwhite" | "ink" | "lime";
+  tone?: "graphite" | "ink" | "paper";
 };
 
 const TONES: Record<NonNullable<HardCardProps["tone"]>, string> = {
-  offwhite: "bg-offwhite text-ink",
-  ink: "bg-ink text-offwhite",
-  lime: "bg-lime text-ink",
+  graphite: "bg-graphite text-paper border-hair",
+  ink: "bg-ink text-paper border-hair",
+  paper: "bg-paper text-ink border-ink",
 };
 
-export function HardCard({ children, className = "", tone = "offwhite" }: HardCardProps) {
+export function HardCard({ children, className = "", tone = "graphite" }: HardCardProps) {
   return (
-    <div
-      className={`rounded-2xl border-2 border-ink shadow-hard ${TONES[tone]} ${className}`}
-    >
+    <div className={`rounded-2xl border ${TONES[tone]} ${className}`}>
       {children}
     </div>
   );
