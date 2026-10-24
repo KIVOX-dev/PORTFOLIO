@@ -114,22 +114,22 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               </Heading>
             </header>
             <RouterLink
-              href="/#project-1"
+              href="/#product-1"
               className={styles.scrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}
               onClick={handleScrollClick}
             >
-              <VisuallyHidden>Scroll to projects</VisuallyHidden>
+              <VisuallyHidden>Scroll to products</VisuallyHidden>
             </RouterLink>
             <RouterLink
-              href="/#project-1"
+              href="/#product-1"
               className={styles.mobileScrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}
               onClick={handleScrollClick}
             >
-              <VisuallyHidden>Scroll to projects</VisuallyHidden>
+              <VisuallyHidden>Scroll to products</VisuallyHidden>
               <svg
                 aria-hidden
                 stroke="currentColor"

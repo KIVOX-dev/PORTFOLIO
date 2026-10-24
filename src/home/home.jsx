@@ -14,8 +14,8 @@ const summaries = projects.map(project => ({
   id: project.slug,
   title: project.title,
   description: project.summary,
-  buttonText: 'View project',
-  buttonLink: `/projects/${project.slug}`,
+  buttonText: 'View product',
+  buttonLink: `/products/${project.slug}`,
   model: {
     type: project.device,
     alt: project.alt,
@@ -82,7 +82,7 @@ export const Home = () => {
       {summaries.map((summary, index) => (
         <ProjectSummary
           key={summary.id}
-          id={`project-${index + 1}`}
+          id={`product-${index + 1}`}
           alternate={index % 2 === 1}
           sectionRef={projectRefs[index]}
           visible={visibleSections.includes(projectRefs[index].current)}

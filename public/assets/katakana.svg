@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <defs>
     <symbol id="katakana-project" viewBox="0 0 751 136">
-      <text x="0" y="108" font-family="Gotham, system-ui, sans-serif" font-weight="700" font-size="128" textLength="751" lengthAdjust="spacingAndGlyphs">PROJECT</text>
+      <text x="0" y="108" font-family="Gotham, system-ui, sans-serif" font-weight="700" font-size="128" textLength="751" lengthAdjust="spacingAndGlyphs">PRODUCT</text>
     </symbol>
     <symbol id="katakana-profile" viewBox="0 0 136 766">
       <text transform="translate(28 0) rotate(90)" x="0" y="0" font-family="Gotham, system-ui, sans-serif" font-weight="700" font-size="112" textLength="766" lengthAdjust="spacingAndGlyphs">PROFILE</text>

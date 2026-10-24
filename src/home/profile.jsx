@@ -28,7 +28,7 @@ const ProfileText = ({ visible, titleId }) => (
       My interests span UI/UX design, frontend development, AI-powered applications, and open-source collaboration. I work with React, Figma, Git, and modern web technologies while continuously exploring new tools and design practices to improve both user experience and software quality.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I believe great products are created through curiosity, continuous learning, and collaboration. I'm always excited to contribute to meaningful projects, connect with developers and designers, and create technology that makes a positive impact.
+      I believe great products are created through curiosity, continuous learning, and collaboration. I'm always excited to contribute to meaningful products, connect with developers and designers, and create technology that makes a positive impact.
     </Text>
   </Fragment>
 );
