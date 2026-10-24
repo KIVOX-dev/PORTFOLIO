@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kaviarasan M — Portfolio
 
-## Getting Started
+Personal portfolio of Kaviarasan M, a student, designer and developer based in Coimbatore, India. Live at [www.buildwithkavi.online](https://www.buildwithkavi.online).
 
-First, run the development server:
+The site has an interactive 3D hero, a dark and light theme, and a showcase of products built at GrowALabs, each shown on a 3D laptop or phone with its own detail page.
+
+## Stack
+
+- [Next.js](https://nextjs.org) (App Router) and React 19
+- [Three.js](https://threejs.org) for the hero sphere and device models
+- [Framer Motion](https://www.framer.com/motion/)
+- CSS Modules with PostCSS custom media
+- Amazon SES for the contact form
+- Deployed on [Vercel](https://vercel.com)
+
+## Getting started
+
+Requires Node.js 22 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Create a production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run the TypeScript compiler without emitting files |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+├── app/          Routes: home, contact, /products/[slug], API, 404 and error pages
+├── components/   Shared UI (button, heading, image, model, transition, theme provider...)
+├── content/      Product data shown on the home page and detail pages (work.js)
+├── home/         Home page sections: intro, product summaries, profile
+├── contact/      Contact form and styles
+├── layouts/      Navbar, error page and product page layout
+├── hooks/        Reusable hooks
+├── utils/        Helpers for styles, images, Three.js and metadata
+└── config.json   Name, role, social links and site URL
+public/
+├── assets/       Fonts, 3D models, textures and product screenshots
+└── draco/        Draco decoder for compressed 3D models
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Editing content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Name, role and social links:** `src/config.json`.
+- **Products:** `src/content/work.js`. Each entry sets the title, summary, device type (`laptop` or `phone`), link and detail page copy. Screenshots live in `public/assets/work/`: `<name>.jpg` (1280×800), `<name>-large.jpg` (2560×1600) and `<name>-placeholder.jpg`. Phone products use portrait screenshots (375×812) listed under `mobileShots`.
+- **About text and photo:** `src/home/profile.jsx` and `public/assets/profile*.jpg`.
+- **Theme colors and type:** `src/components/theme-provider/theme.js`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact form
 
-## Deploy on Vercel
+The form posts to `/api/contact` and sends mail through Amazon SES. Copy `.env.example` to `.env.local` and fill in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+EMAIL=            # where messages are delivered
+FROM_EMAIL=       # a sender address verified in SES
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Without these, the form shows an error instead of sending.
+
+## Deployment
+
+Pushes to `main` deploy to production, and pull requests get a preview, through GitHub Actions (`.github/workflows/deploy.yml`). Lint, typecheck and build must pass first.
+
+Add these repository secrets in GitHub (Settings → Secrets and variables → Actions):
+
+| Secret | Where to find it |
+| --- | --- |
+| `VERCEL_TOKEN` | vercel.com/account/tokens |
+| `VERCEL_ORG_ID` | `orgId` in `.vercel/project.json` after running `vercel link` |
+| `VERCEL_PROJECT_ID` | `projectId` in the same file |
+
+Also add the contact form variables above in the Vercel project settings.
