@@ -1,12 +1,8 @@
 name: CI
 
+# Called from deploy.yml so checks gate every deployment.
 on:
-  pull_request:
   workflow_call:
-
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   verify:
