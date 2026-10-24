@@ -1,3 +1,6 @@
+/* Declare layer order before any other stylesheet defines a layer */
+@layer theme, base, components, layout;
+
 @layer base {
   :root {
     font-synthesis: none;

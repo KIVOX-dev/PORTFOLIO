@@ -1,3 +1,4 @@
+import "./globals.css";
 import type { Viewport } from "next";
 import { cookies } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
@@ -7,7 +8,6 @@ import { Navbar } from "@/layouts/navbar";
 import { SkipLink } from "@/layouts/navbar/skip-link";
 import config from "@/config.json";
 import styles from "./root.module.css";
-import "./globals.css";
 
 export const viewport: Viewport = {
   width: "device-width",

@@ -28,12 +28,11 @@ export function ProjectPage({ project }) {
     <Fragment>
       <ProjectContainer>
         <ProjectBackground
-          src={`/assets/work/${shot.name}.jpg`}
-          srcSet={hero.srcSet}
+          src={`/assets/work/${shot.name}-bg.jpg`}
           width={width}
           height={height}
-          placeholder={hero.placeholder}
-          opacity={0.8}
+          placeholder={`/assets/work/${shot.name}-bg-placeholder.jpg`}
+          opacity={0.7}
         />
         <ProjectHeader
           title={title}
