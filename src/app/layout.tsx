@@ -1,46 +1,56 @@
-import type { Metadata } from "next";
-import { Archivo_Black, Caveat, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import type { Viewport } from "next";
+import { cookies } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
+import { RootThemeProvider } from "@/components/theme-provider";
+import { themeStyles } from "@/components/theme-provider/theme-styles";
+import { Navbar } from "@/layouts/navbar";
+import { SkipLink } from "@/layouts/navbar/skip-link";
+import config from "@/config.json";
+import styles from "./root.module.css";
 import "./globals.css";
-import { SITE } from "@/content/site";
 
-const display = Archivo_Black({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const script = Caveat({
-  variable: "--font-script",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
-
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-const body = Plus_Jakarta_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const metadata: Metadata = {
-  title: `${SITE.name} — ${SITE.role}`,
-  description: SITE.tagline,
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const metadata = {
+  metadataBase: new URL(config.url),
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: [{ url: "/shortcut.png", type: "image/png", sizes: "64x64" }],
+    apple: [{ url: "/icon-256.png", sizes: "256x256" }],
+  },
+  authors: [{ name: config.name }],
+};
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme")?.value === "light" ? "light" : "dark";
+
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${script.variable} ${mono.variable} ${body.variable} scroll-smooth`}
-    >
-      <body className="bg-ink text-paper font-body antialiased">
-        {children}
+    <html lang="en">
+      <head>
+        {/* Theme color doesn't support oklch so these are hard coded hexes */}
+        <meta name="theme-color" content={theme === "dark" ? "#111" : "#F2F2F2"} />
+        <meta name="color-scheme" content={theme === "light" ? "light dark" : "dark light"} />
+        <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+        <link rel="preload" href="/assets/fonts/gotham-medium.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/assets/fonts/gotham-book.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="author" href="/humans.txt" type="text/plain" />
+      </head>
+      <body data-theme={theme}>
+        <RootThemeProvider initialTheme={theme}>
+          <SkipLink />
+          <Navbar />
+          <main id="main-content" className={styles.container} tabIndex={-1}>
+            {children}
+          </main>
+        </RootThemeProvider>
         <Analytics />
       </body>
     </html>

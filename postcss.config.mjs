@@ -1,6 +1,9 @@
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    "@csstools/postcss-global-data": {
+      files: ["src/app/media.css"],
+    },
+    "postcss-custom-media": {},
   },
 };
 

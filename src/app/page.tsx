@@ -1,31 +1,12 @@
-import { Nav } from "@/components/Nav";
-import { Hero } from "@/components/Hero";
-import { StatementTicker } from "@/components/StatementTicker";
-import { About } from "@/components/About";
-import { Process } from "@/components/Process";
-import { InsideWork } from "@/components/InsideWork";
-import { FeaturedProject } from "@/components/FeaturedProject";
-import { SplitBand } from "@/components/SplitBand";
-import { ProjectsGrid } from "@/components/ProjectsGrid";
-import { FinalCta } from "@/components/FinalCta";
-import { Footer } from "@/components/Footer";
+import { Home } from "@/home/home";
+import { baseMeta } from "@/utils/meta";
+import config from "@/config.json";
 
-export default function Home() {
-  return (
-    <>
-      <Nav />
-      <main className="flex flex-1 flex-col">
-        <Hero />
-        <StatementTicker />
-        <About />
-        <Process />
-        <InsideWork />
-        <FeaturedProject />
-        <SplitBand />
-        <ProjectsGrid />
-        <FinalCta />
-      </main>
-      <Footer />
-    </>
-  );
+export const metadata = baseMeta({
+  title: "Student + Designer + Developer",
+  description: `Design portfolio of ${config.name}: building intuitive, user-centered digital experiences.`,
+});
+
+export default function Page() {
+  return <Home />;
 }

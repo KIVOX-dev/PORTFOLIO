@@ -1,0 +1,17 @@
+.phones {
+  display: flex;
+  justify-content: center;
+  gap: var(--spaceXL);
+  margin-top: var(--space3XL);
+
+  @media (--mediaMobile) {
+    gap: var(--spaceM);
+  }
+}
+
+.phone {
+  width: 320px;
+  max-width: 45%;
+  border-radius: 28px;
+  overflow: hidden;
+}

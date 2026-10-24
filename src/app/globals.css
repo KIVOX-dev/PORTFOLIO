@@ -1,167 +1,117 @@
-@import "tailwindcss";
-
-:root {
-  --color-ink: #0a0a0a;
-  --color-void: #050505;
-  --color-graphite: #131313;
-  --color-paper: #f3efe6;
-  --color-paper-dim: #e8e2d2;
-  --color-red: #e5171f;
-  --color-red-dim: #ff4148;
-  --color-steel: #8f8f8f;
-  --color-hair: rgba(243, 239, 230, 0.14);
-  --color-hair-ink: rgba(10, 10, 10, 0.12);
-}
-
-@theme inline {
-  --color-ink: var(--color-ink);
-  --color-void: var(--color-void);
-  --color-graphite: var(--color-graphite);
-  --color-paper: var(--color-paper);
-  --color-paper-dim: var(--color-paper-dim);
-  --color-red: var(--color-red);
-  --color-red-dim: var(--color-red-dim);
-  --color-steel: var(--color-steel);
-  --color-hair: var(--color-hair);
-  --color-hair-ink: var(--color-hair-ink);
-
-  --font-display: var(--font-display);
-  --font-script: var(--font-script);
-  --font-mono: var(--font-mono);
-  --font-body: var(--font-body);
-}
-
-* {
-  border-color: var(--color-hair);
-}
-
-html {
-  overflow-x: hidden;
-  background: var(--color-void);
-}
-
-body {
-  overflow-x: hidden;
-}
-
-::selection {
-  background: var(--color-red);
-  color: var(--color-paper);
-}
-
-/* Halftone dot texture, poster-style, used as bg-dots utility */
-.bg-dots {
-  background-image: radial-gradient(rgba(243, 239, 230, 0.5) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: -11px -11px;
-}
-
-.bg-dots-red {
-  background-image: radial-gradient(var(--color-red) 1.4px, transparent 1.4px);
-  background-size: 16px 16px;
-}
-
-.bg-dots-ink {
-  background-image: radial-gradient(rgba(10, 10, 10, 0.45) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: -11px -11px;
-}
-
-/* Film-grain overlay, printed-poster grit */
-.bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-}
-
-/* Radial target rings, echoes the poster's "annihilation" motif */
-.bg-target {
-  background-image:
-    repeating-radial-gradient(circle at 50% 50%, rgba(229, 23, 31, 0.35) 0px, rgba(229, 23, 31, 0.35) 1px, transparent 1px, transparent 26px);
-}
-
-/* Hairline border helpers on black surfaces */
-.border-hair {
-  border-color: var(--color-hair);
-}
-
-/* Hard offset shadow system, no blur, poster-panel "sticker" edge */
-.shadow-hard {
-  box-shadow: 4px 4px 0px 0px var(--color-ink);
-}
-
-.shadow-hard-lg {
-  box-shadow: 8px 8px 0px 0px var(--color-ink);
-}
-
-.shadow-hard-sm {
-  box-shadow: 2px 2px 0px 0px var(--color-ink);
-}
-
-.shadow-hard-red {
-  box-shadow: 4px 4px 0px 0px var(--color-red);
-}
-
-.shadow-glow-red {
-  box-shadow: 0 0 60px -12px rgba(229, 23, 31, 0.55);
-}
-
-.press-hard {
-  transition: transform 150ms cubic-bezier(0.32, 0.72, 0, 1),
-    box-shadow 150ms cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.press-hard:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px 0px var(--color-ink);
-}
-
-.press-hard:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px 0px var(--color-ink);
-}
-
-.press-hard-red:hover {
-  box-shadow: 2px 2px 0px 0px var(--color-red);
-}
-
-.press-hard-red:active {
-  box-shadow: 0px 0px 0px 0px var(--color-red);
-}
-
-/* Marquee ticker */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
-  to {
-    transform: translateX(-50%);
+
+  :where(html, body) {
+    min-height: 100%;
+    width: 100%;
+  }
+
+  :where(*, *::before, *::after) {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+  }
+
+  :where(input, textarea, select, button) {
+    font: inherit;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    appearance: none;
+  }
+
+  :where(button, a) {
+    touch-action: manipulation;
+  }
+
+  :where(svg, img, picture, video, iframe, canvas) {
+    display: block;
+  }
+
+  :any-link {
+    text-decoration: none;
+  }
+
+  ul {
+    padding: 0;
   }
 }
 
-.animate-marquee {
-  animation: marquee 26s linear infinite;
-}
-
-/* Slow ambient float for hero portrait / decorative glyphs */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0);
+@layer base {
+  :root {
+    --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
   }
-  50% {
-    transform: translateY(-14px);
+
+  html, body {
+    font-family: var(--fontStack);
+    font-weight: var(--fontWeightRegular);
+    background-color: var(--background);
+    transition: var(--durationM) ease;
+    transition-property: background, opacity;
+    color: var(--textBody);
+    width: 100vw;
+    overflow-x: hidden;
+    opacity: 1;
+
+    &:focus {
+      outline: none;
+    }
   }
-}
 
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
-@keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
+  :where(code, pre) {
+    font-family: var(--monoFontStack);
   }
-}
 
-.animate-spin-slow {
-  animation: spin-slow 22s linear infinite;
+  ::selection {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  :focus {
+    outline: 4px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal {
+    0% {
+      transform: scale3d(0, 1, 1);
+      transform-origin: left;
+    }
+
+    50% {
+      transform: scale3d(1, 1, 1);
+      transform-origin: left;
+    }
+
+    51% {
+      transform: scale3d(1, 1, 1);
+      transform-origin: right;
+    }
+
+    100% {
+      transform: scale3d(0, 1, 1);
+      transform-origin: right;
+    }
+  }
 }
