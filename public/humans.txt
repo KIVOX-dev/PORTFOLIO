@@ -1,39 +1,30 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+/* TEAM */
 
-The humans.txt file explains the team, technology,
-and graphic assets behind this site humanstxt.org.
+Kaviarasan M
+Designer & developer
+Coimbatore, India
+github.com/KIVOX-dev
+bluesky.app/profile/07kaviarasan.bsky.social
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+/* DESIGN TOOLS */
 
-Kaviarasan M
-Hand crafted design & web development
-
-Design tools:
 Figma
 Photoshop
 Blender
 
-bluesky.app/profile/07kaviarasan.bsky.social
-github.com/KIVOX-dev
-
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+/* TECHNOLOGY */
 
+Next.js
 React
-Remix
 Three.js
 Framer Motion
 
 _______________________________________________________________________________
 
-FONTS | フォント
+/* FONTS */
 
 Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8
